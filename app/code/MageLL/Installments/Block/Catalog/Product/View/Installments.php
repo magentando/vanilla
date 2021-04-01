@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!--
+<?php
 /**
  * Trezo Soluções Web
  *
@@ -17,8 +16,13 @@
  *
  * @author Trezo Core Team <contato@trezo.com.br>
  */
--->
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
-    <module name="MageLL_Installments"/>
-</config>
+declare(strict_types=1);
+
+namespace MageLL\Installments\Block\Catalog\Product\View;
+
+use Magento\Catalog\Block\Product\View;
+
+class Installments extends View
+{
+
+}

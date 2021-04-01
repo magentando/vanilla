@@ -1,0 +1,55 @@
+<?php
+/**
+ * Trezo Soluções Web
+ *
+ * NOTICE OF LICENSE
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to https://www.trezo.com.br for more information.
+ *
+ * @category Trezo
+ *
+ * @copyright Copyright (c) 2021 Trezo Soluções Web. (https://www.trezo.com.br)
+ *
+ * @author Trezo Core Team <contato@trezo.com.br>
+ */
+?>
+
+<?php
+/**
+ * @var \MageLL\Installments\Block\Catalog\Product\View\Installments $block
+ * @var \MageLL\Installments\Helper\Configuration $helper
+ */
+
+$product = $block->getProduct();
+$helper = $this->helper(\MageLL\Installments\Helper\Configuration::class);
+?>
+
+
+<script>
+    window.installments = {
+        priceConfig: <?= $block->getJsonConfig() ?>,
+        installmentConfig: <?= $helper->exportConfig() ?>
+    }
+</script>
+
+<div id="installments-<?= $product->getId()?>" data-bind="scope:'installments'">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+    <script type="text/x-magento-init">
+    {
+        "#installments-<?= $product->getId()?>": {
+            "Magento_Ui/js/core/app": {
+               "components": {
+                    "installments": {
+                        "component": "MageLL_Installments/js/catalog/product/view/installments"
+                    }
+                }
+            }
+        }
+    }
+    </script>
+</div>
+
